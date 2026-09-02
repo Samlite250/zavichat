@@ -2,25 +2,25 @@
 import './App.css';
 
 const PROFILES = [
-  { code: 'US', name: 'Margaret W.', age: 58, country: 'USA', type: 'looking', avatar: '68' },
-  { code: 'GB', name: 'Robert H.', age: 62, country: 'UK', type: 'typing', avatar: '59' },
-  { code: 'DE', name: 'Helga S.', age: 55, country: 'Germany', type: 'looking', avatar: '44' },
-  { code: 'CA', name: 'James M.', age: 49, country: 'Canada', type: 'typing', avatar: '66' },
-  { code: 'AU', name: 'Karen P.', age: 51, country: 'Australia', type: 'looking', avatar: '33' },
-  { code: 'SE', name: 'Lars E.', age: 60, country: 'Sweden', type: 'looking', avatar: '22' },
-  { code: 'NO', name: 'Ingrid O.', age: 57, country: 'Norway', type: 'typing', avatar: '21' },
-  { code: 'FR', name: 'Pierre D.', age: 63, country: 'France', type: 'typing', avatar: '19' },
-  { code: 'IT', name: 'Sofia R.', age: 54, country: 'Italy', type: 'looking', avatar: '14' },
-  { code: 'RW', name: 'Kwizera T.', age: 29, country: 'Rwanda', type: 'looking', avatar: '12' },
-  { code: 'US', name: 'William T.', age: 67, country: 'USA', type: 'typing', avatar: '11' },
-  { code: 'GB', name: 'Diane K.', age: 59, country: 'UK', type: 'typing', avatar: '5' },
+  { code: 'US', name: 'Margaret W.', age: 58, country: 'USA', type: 'looking', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
+  { code: 'GB', name: 'Robert H.', age: 62, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80' },
+  { code: 'DE', name: 'Helga S.', age: 55, country: 'Germany', type: 'looking', avatar: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=200&q=80' },
+  { code: 'CA', name: 'James M.', age: 49, country: 'Canada', type: 'typing', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+  { code: 'AU', name: 'Karen P.', age: 51, country: 'Australia', type: 'looking', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80' },
+  { code: 'SE', name: 'Lars E.', age: 60, country: 'Sweden', type: 'looking', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
+  { code: 'NO', name: 'Ingrid O.', age: 57, country: 'Norway', type: 'typing', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
+  { code: 'FR', name: 'Pierre D.', age: 63, country: 'France', type: 'typing', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80' },
+  { code: 'IT', name: 'Sofia R.', age: 54, country: 'Italy', type: 'looking', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80' },
+  { code: 'RW', name: 'Kwizera T.', age: 29, country: 'Rwanda', type: 'looking', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80' },
+  { code: 'US', name: 'William T.', age: 67, country: 'USA', type: 'typing', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80' },
+  { code: 'GB', name: 'Diane K.', age: 59, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80' },
 ];
 
 const TESTIMONIALS = [
-  { initials: 'KO', flag: '🇰🇪', name: 'Kelvin O.', country: 'Kenya', amt: '$1,240 last week', quote: 'I cleared my rent in 9 days. M-Pesa hits in seconds. Truly life-changing.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=68' },
-  { initials: 'AN', flag: '🇳🇬', name: 'Amaka N.', country: 'Nigeria', amt: '$860 this month', quote: "Best side hustle I've ever had. The foreigners are respectful and kind.", stars: 5, avatar: 'https://i.pravatar.cc/150?img=47' },
-  { initials: 'JM', flag: '🇷🇼', name: 'Jean M.', country: 'Rwanda', amt: 'Rwf 148,000 this week', quote: 'MoMo withdrawal came through in 14 seconds. I was shocked! Zavichat is highly legitimate.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=53' },
-  { initials: 'SD', flag: '🇿🇦', name: 'Sipho D.', country: 'South Africa', amt: '$1,510 this month', quote: 'I quit my night job. Zavichat pays me better and I work from my phone.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=12' },
+  { initials: 'KO', flag: '🇰🇪', name: 'Kelvin O.', country: 'Kenya', amt: '$1,240 last week', quote: 'I cleared my rent in 9 days. M-Pesa hits in seconds. Truly life-changing.', stars: 5, avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80' },
+  { initials: 'AN', flag: '🇳🇬', name: 'Amaka N.', country: 'Nigeria', amt: '$860 this month', quote: "Best side hustle I've ever had. The foreigners are respectful and kind.", stars: 5, avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=200&q=80' },
+  { initials: 'JM', flag: '🇷🇼', name: 'Jean M.', country: 'Rwanda', amt: 'Rwf 148,000 this week', quote: 'MoMo withdrawal came through in 14 seconds. I was shocked! Zavichat is highly legitimate.', stars: 5, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+  { initials: 'SD', flag: '🇿🇦', name: 'Sipho D.', country: 'South Africa', amt: '$1,510 this month', quote: 'I quit my night job. Zavichat pays me better and I work from my phone.', stars: 5, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
 ];
 
 const FAQS = [
@@ -333,7 +333,15 @@ export default function App() {
             <div className="profile-card" key={i}>
               <div className="pc-top">
                 <div className="pc-avatar-wrap">
-                  <img src={`https://i.pravatar.cc/150?img=${p.avatar}`} alt={p.name} className="pc-avatar" />
+                  <img
+                    src={p.avatar}
+                    alt={p.name}
+                    className="pc-avatar"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0A84FF&color=fff`;
+                    }}
+                  />
                   <span className="pc-online" />
                 </div>
                 <div className="pc-info">
@@ -370,7 +378,15 @@ export default function App() {
         <div className="earn-ticker-track">
           {[...TOASTS, ...TOASTS, ...TOASTS].map((t, i) => (
             <div className="earn-item" key={i}>
-              <img src={`https://i.pravatar.cc/60?img=${(i % 12) + 1}`} alt="" className="earn-avatar" />
+              <img
+                src={PROFILES[i % PROFILES.length].avatar}
+                alt=""
+                className="earn-avatar"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`;
+                }}
+              />
               <span>{t.flag} {t.name} just withdrew</span>
               <strong className="earn-amount">{t.amount}</strong>
               <span style={{ color: '#94a3b8' }}>via {t.method}</span>
@@ -391,7 +407,15 @@ export default function App() {
             <div className="testi-card" key={i}>
               <div className="testi-top">
                 <div className="testi-avatar-wrap">
-                  <img src={t.avatar} alt={t.name} className="testi-avatar-img" />
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="testi-avatar-img"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`;
+                    }}
+                  />
                   <span className="testi-flag-badge">{t.flag}</span>
                 </div>
                 <div className="testi-info">

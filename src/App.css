@@ -875,18 +875,36 @@
   margin-bottom: 16px;
 }
 
-.testi-avatar {
-  font-size: 1.4rem;
-  width: 50px;
-  height: 50px;
-  background: var(--primary-light);
+.testi-avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.testi-avatar-img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.testi-flag-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  font-size: 1rem;
+  background: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  color: var(--primary);
-  border: 2px solid rgba(10, 132, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1;
 }
 
 .testi-info strong {

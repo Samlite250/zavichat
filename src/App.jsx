@@ -17,12 +17,10 @@ const PROFILES = [
 ];
 
 const TESTIMONIALS = [
-  { initials: 'KO', flag: '🇰🇪', name: 'Kelvin O.', country: 'Kenya', amt: '$1,240 last week', quote: 'I cleared my rent in 9 days. M-Pesa hits in seconds. Truly life-changing.', stars: 5 },
-  {
-    initials: 'AN', flag: '🇳🇬', name: 'Amaka N.', country: 'Nigeria', amt: '$860 this month', quote: "Best side hustle I've ever had. The foreigners are respectful and kind.", stars: 5
-  },
-  { initials: 'JM', flag: '🇷🇼', name: 'Jean M.', country: 'Rwanda', amt: 'Rwf 148,000 this week', quote: 'MoMo withdrawal came through in 14 seconds. I was shocked! Zavichat is highly legitimate.', stars: 5 },
-  { initials: 'SD', flag: '🇿🇦', name: 'Sipho D.', country: 'South Africa', amt: '$1,510 this month', quote: 'I quit my night job. Zavichat pays me better and I work from my phone.', stars: 5 },
+  { initials: 'KO', flag: '🇰🇪', name: 'Kelvin O.', country: 'Kenya', amt: '$1,240 last week', quote: 'I cleared my rent in 9 days. M-Pesa hits in seconds. Truly life-changing.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=68' },
+  { initials: 'AN', flag: '🇳🇬', name: 'Amaka N.', country: 'Nigeria', amt: '$860 this month', quote: "Best side hustle I've ever had. The foreigners are respectful and kind.", stars: 5, avatar: 'https://i.pravatar.cc/150?img=47' },
+  { initials: 'JM', flag: '🇷🇼', name: 'Jean M.', country: 'Rwanda', amt: 'Rwf 148,000 this week', quote: 'MoMo withdrawal came through in 14 seconds. I was shocked! Zavichat is highly legitimate.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=53' },
+  { initials: 'SD', flag: '🇿🇦', name: 'Sipho D.', country: 'South Africa', amt: '$1,510 this month', quote: 'I quit my night job. Zavichat pays me better and I work from my phone.', stars: 5, avatar: 'https://i.pravatar.cc/150?img=12' },
 ];
 
 const FAQS = [
@@ -392,7 +390,10 @@ export default function App() {
           {TESTIMONIALS.map((t, i) => (
             <div className="testi-card" key={i}>
               <div className="testi-top">
-                <div className="testi-avatar">{t.initials} {t.flag}</div>
+                <div className="testi-avatar-wrap">
+                  <img src={t.avatar} alt={t.name} className="testi-avatar-img" />
+                  <span className="testi-flag-badge">{t.flag}</span>
+                </div>
                 <div className="testi-info">
                   <strong>{t.name}</strong>
                   <span>{t.country}</span>

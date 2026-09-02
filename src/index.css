@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary: #0A84FF;
+  --primary-dark: #0068CC;
+  --primary-light: rgba(10, 132, 255, 0.12);
+  --primary-gradient: linear-gradient(135deg, #0A84FF 0%, #34C759 100%);
+  --green: #34C759;
+  --purple: #7B5CF7;
+  --bg-main: #F4F7FA;
+  --bg-white: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+  --text-dark: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.07);
+  --shadow-hover: 0 12px 40px rgba(15, 23, 42, 0.13);
+  --shadow-hero: 0 20px 60px rgba(10, 132, 255, 0.25);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}

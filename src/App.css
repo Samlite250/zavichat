@@ -322,8 +322,14 @@
 }
 
 /* ---- WHATSAPP BAND ---- */
+.wa-band-wrapper {
+  padding: 32px 40px 0;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
 .wa-band {
-  margin: 0 40px;
+  margin: 0;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   border-radius: var(--radius-lg);
   padding: 22px 36px;
@@ -333,6 +339,7 @@
   gap: 20px;
   color: white;
   box-shadow: 0 8px 32px rgba(37, 211, 102, 0.25);
+  width: 100%;
 }
 
 .wa-band-text h3 {
@@ -1504,11 +1511,18 @@
   }
 
   /* WhatsApp band */
+  .wa-band-wrapper {
+    padding: 20px 12px 0;
+  }
+
   .wa-band {
-    margin: 0 20px;
+    margin: 0;
+    width: 100%;
     flex-direction: column;
     text-align: center;
     gap: 16px;
+    padding: 22px 18px;
+    border-radius: 16px;
   }
 
   /* Value */
@@ -1654,9 +1668,13 @@
   }
 
   /* WhatsApp band */
+  .wa-band-wrapper {
+    padding: 16px 12px 0;
+  }
+
   .wa-band {
-    margin: 0 16px;
-    padding: 20px 20px;
+    padding: 20px 16px;
+    border-radius: 16px;
   }
 
   /* Value */
@@ -1794,9 +1812,13 @@
   }
 
   /* WhatsApp band */
+  .wa-band-wrapper {
+    padding: 14px 8px 0;
+  }
+
   .wa-band {
-    margin: 0 14px;
-    padding: 18px 16px;
+    padding: 18px 14px;
+    border-radius: 14px;
   }
 
   .wa-band-text h3 {
@@ -1972,9 +1994,7 @@
   background: rgba(10, 132, 255, 0.08);
 }
 
-/* ---- REBA MODAL & LANG SWITCHER ---- */
-.lang-switcher,
-.lang-switcher-mobile {
+.lang-switcher {
   border: 1.5px solid var(--border);
   border-radius: 99px;
   background: transparent;
@@ -1993,9 +2013,75 @@
   color: var(--primary);
 }
 
-.lang-switcher-mobile {
-  margin-left: auto;
-  margin-right: 12px;
+/* Mobile Nav Right & Header Lang */
+.mobile-nav-right {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 960px) {
+  .mobile-nav-right {
+    display: flex;
+  }
+}
+
+.mobile-header-lang {
+  border: 1.5px solid rgba(10, 132, 255, 0.25);
+  border-radius: 99px;
+  background: rgba(10, 132, 255, 0.06);
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Drawer Segmented Language Control */
+.drawer-lang-section {
+  padding: 14px 16px 8px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+}
+
+.drawer-lang-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.lang-segmented-control {
+  display: flex;
+  background: #e2e8f0;
+  padding: 3px;
+  border-radius: 12px;
+  gap: 3px;
+}
+
+.lang-seg-btn {
+  flex: 1;
+  padding: 8px 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #475569;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.lang-seg-btn.active {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .profile-detail-modal {

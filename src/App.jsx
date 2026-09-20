@@ -128,14 +128,23 @@ export default function App() {
           </a>
         </div>
 
-        {/* Hamburger — mobile only */}
-        <button
-          className={`hamburger${menuOpen ? ' open' : ''}`}
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label="Toggle menu"
-        >
-          <span /><span /><span />
-        </button>
+        {/* Mobile top-bar right controls */}
+        <div className="mobile-nav-right">
+          <select className="mobile-header-lang" value={lang} onChange={e => setLang(e.target.value)}>
+            <option value="en">🇬🇧 EN</option>
+            <option value="rw">🇷🇼 RW</option>
+            <option value="fr">🇫🇷 FR</option>
+          </select>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className={`hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </nav>
 
       {/* ── Mobile Drawer Backdrop ── */}
@@ -150,14 +159,27 @@ export default function App() {
             <img src="/logo.png" alt="Zavichat Logo" className="nav-logo-img" style={{ width: 36, height: 36 }} />
             Zavi<span className="accent">Chat</span>
           </a>
-          <select className="lang-switcher-mobile" value={lang} onChange={e => setLang(e.target.value)}>
-            <option value="en">EN</option><option value="rw">RW</option><option value="fr">FR</option>
-          </select>
           <button className="drawer-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
+        </div>
+
+        {/* Segmented Language Selector inside Drawer */}
+        <div className="drawer-lang-section">
+          <div className="drawer-lang-title">{T.dict_lang_title || 'Select Language / Hitamo Ururimi'}</div>
+          <div className="lang-segmented-control">
+            <button className={`lang-seg-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>
+              🇬🇧 English
+            </button>
+            <button className={`lang-seg-btn ${lang === 'rw' ? 'active' : ''}`} onClick={() => setLang('rw')}>
+              🇷🇼 Kinyarwanda
+            </button>
+            <button className={`lang-seg-btn ${lang === 'fr' ? 'active' : ''}`} onClick={() => setLang('fr')}>
+              🇫🇷 Français
+            </button>
+          </div>
         </div>
 
         <div className="drawer-online">
@@ -246,7 +268,7 @@ export default function App() {
       </div>
 
       {/* ── WhatsApp Community Band ── */}
-      <div style={{ padding: '32px 40px 0' }}>
+      <div className="wa-band-wrapper">
         <div className="wa-band">
           <div className="wa-band-text">
             <h3>{T.wa_title}</h3>

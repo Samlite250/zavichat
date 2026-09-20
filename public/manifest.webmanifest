@@ -1,8 +1,21 @@
 {
     "name": "Zavichat",
     "short_name": "Zavichat",
+    "description": "Zavichat - Earn by chatting with foreigners, training foreigners about local languages, chatting with higher aged people and get paid. Free to join.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#0A84FF"
+    "theme_color": "#0A84FF",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
 }

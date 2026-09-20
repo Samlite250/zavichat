@@ -50,10 +50,23 @@ const TICKER = [
   '· Ama just earned $8.10',
 ];
 
+const PROOF_IMAGES = [
+  "WhatsApp Image 2026-09-20 at 22.10.47.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.10.48.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.10.51.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.10.52.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.11.10.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.11.11.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.11.20.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.11.25.jpeg",
+  "WhatsApp Image 2026-09-20 at 22.11.27.jpeg"
+];
+
 export default function App() {
   const [toast, setToast] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [galleryOpen, setGalleryOpen] = useState(false);
 
   useEffect(() => {
     let i = 0;
@@ -92,6 +105,7 @@ export default function App() {
             <span className="pulse-dot" />
             1,918 online
           </div>
+          <button className="btn-gallery" onClick={() => setGalleryOpen(true)}>Payment Gallery 📸</button>
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install App</a>
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none' }}>
             Start Earning
@@ -240,7 +254,7 @@ export default function App() {
             <h3>📱 Join Our Training WhatsApp Channel</h3>
             <p>Get training updates &amp; connect with 80,000+ earners across Africa.</p>
           </div>
-          <button className="btn-wa" onClick={() => window.open('https://mulaearn.com/register.php?ref=Cynthia', '_blank')}>Join Now →</button>
+          <button className="btn-wa" onClick={() => window.open('https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX', '_blank')}>Join Now →</button>
         </div>
       </div>
 
@@ -506,7 +520,7 @@ export default function App() {
             <div className="footer-col">
               <h4>Support</h4>
               <a href="#">Contact Us</a>
-              <a href="#">WhatsApp Channel</a>
+              <a href="https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
               <a href="#">FAQ</a>
             </div>
           </div>
@@ -527,6 +541,28 @@ export default function App() {
               <span>{toast.country} · via {toast.method} · just now</span>
             </div>
             <span className="toast-amount">{toast.amount}</span>
+          </div>
+        </div>
+      )}
+
+      {/* ── Gallery Modal ── */}
+      {galleryOpen && (
+        <div className="gallery-overlay" onClick={() => setGalleryOpen(false)}>
+          <div className="gallery-modal" onClick={e => e.stopPropagation()}>
+            <button className="gallery-modal-close" onClick={() => setGalleryOpen(false)} aria-label="Close Gallery">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+            </button>
+            <div className="gallery-header">
+              <h2>Verified Payout Proofs</h2>
+              <p>Real screenshots from our community cashing out securely direct to M-Pesa, MoMo, and Banks.</p>
+            </div>
+            <div className="gallery-grid">
+              {PROOF_IMAGES.map((img, i) => (
+                <div key={i} className="gallery-img-wrap">
+                  <img src={`/withdrwalproofs/${encodeURI(img)}`} alt="Payment Proof" loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['logo.jpeg', 'icon-192.png', 'icon-512.png'],
+      includeAssets: ['logo.png', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'Zavichat – Chat & Earn',
         short_name: 'Zavichat',

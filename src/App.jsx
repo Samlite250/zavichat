@@ -105,7 +105,7 @@ export default function App() {
       {/* ── Navigation ── */}
       <nav className="nav">
         <a href="#" className="nav-logo">
-          <img src="/logo.jpeg" alt="Zavichat Logo" className="nav-logo-img" />
+          <img src="/logo.png" alt="Zavichat Logo" className="nav-logo-img" />
           Zavi<span className="accent">Chat</span>
         </a>
 
@@ -147,7 +147,7 @@ export default function App() {
       <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
         <div className="drawer-header">
           <a href="#" className="nav-logo" onClick={() => setMenuOpen(false)}>
-            <img src="/logo.jpeg" alt="Zavichat Logo" className="nav-logo-img" style={{ width: 36, height: 36 }} />
+            <img src="/logo.png" alt="Zavichat Logo" className="nav-logo-img" style={{ width: 36, height: 36 }} />
             Zavi<span className="accent">Chat</span>
           </a>
           <select className="lang-switcher-mobile" value={lang} onChange={e => setLang(e.target.value)}>

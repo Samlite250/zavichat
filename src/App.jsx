@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import './App.css';
+import DICT from './translations.js';
 
 const PROFILES = [
   { code: 'US', name: 'Margaret W.', age: 58, country: 'USA', type: 'looking', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
@@ -23,14 +24,6 @@ const TESTIMONIALS = [
   { initials: 'SD', flag: '🇿🇦', name: 'Sipho D.', country: 'South Africa', amt: '$1,510 this month', quote: 'I quit my night job. Zavichat pays me better and I work from my phone.', stars: 5, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
 ];
 
-const FAQS = [
-  { q: 'How much can I actually make?', a: 'It fully depends on your hustle. Active chatters pull in a solid side income weekly. The longer you keep the conversation going, the more money drops into your account.' },
-  { q: 'Is this a scam?', a: 'No. Zavichat is a registered platform that has paid out over $1.2 Million. You don’t pay us anything — we pay you for your chatting time. Cash out your balance anytime.' },
-  { q: 'Do I need special skills?', a: 'Not at all. If you know how to text on WhatsApp and keep a guy entertained, you’re good to go. Just be fun and friendly.' },
-  { q: 'How long do withdrawals take?', a: 'Seconds. Once you hit withdraw, the money hits your M-Pesa, MoMo, or bank account almost instantly.' },
-  { q: 'Is my identity protected?', a: '100%. You use a chat alias (fake name) and your real details are never shared with anyone you talk to.' },
-];
-
 const TOASTS = [
   { flag: '🇰🇪', name: 'Faith W.', country: 'Kenya', method: 'M-Pesa', amount: '$887' },
   { flag: '🇷🇼', name: 'Marie C.', country: 'Rwanda', method: 'MoMo', amount: 'Rwf 32,500' },
@@ -51,40 +44,10 @@ const TICKER = [
 ];
 
 const PROOF_IMAGES = [
-  "proof1.jpeg",
-  "proof2.jpeg",
-  "proof3.jpeg",
-  "proof4.jpeg",
-  "proof5.jpeg",
-  "proof6.jpeg",
-  "proof7.jpeg",
-  "proof8.jpeg",
-  "proof9.jpeg"
+  "proof1.jpeg", "proof2.jpeg", "proof3.jpeg",
+  "proof4.jpeg", "proof5.jpeg", "proof6.jpeg",
+  "proof7.jpeg", "proof8.jpeg", "proof9.jpeg",
 ];
-
-const DICT = {
-  en: {
-    hero_title: 'Get Paid to Chat with<br /><span class="highlight">Lonely Foreigners</span>',
-    hero_sub: 'Over 80,000 Africans are already earning daily. Cash out your earnings instantly to M-Pesa, MoMo, or your local bank — straight from your phone.',
-    start_btn: 'Start Chat & Earn',
-    install_btn: 'Install Zavichat App',
-    trust_badge: 'Trusted by 80,000+ Africans'
-  },
-  rw: {
-    hero_title: 'Heembwa uganira<br /><span class="highlight">n\'abanyamahanga</span>',
-    hero_sub: 'Abanyafurika barenga 80,000 bamaze kubona amafaranga buri munsi. Bikuza ako kanya kuri M-Pesa, MoMo, cyangwa banki — ukoresheje telefone yawe.',
-    start_btn: 'Tangira Uvugane Unakorerere',
-    install_btn: 'Shyiramo App ya Zavichat',
-    trust_badge: 'Yizewe n\'abanyafurika 80,000+'
-  },
-  fr: {
-    hero_title: 'Soyez payé pour discuter avec<br /><span class="highlight">des étrangers seuls</span>',
-    hero_sub: 'Plus de 80 000 Africains gagnent déjà de l\'argent chaque jour. Retirez instantanément via M-Pesa, MoMo ou votre banque.',
-    start_btn: 'Commentez et Gagnez',
-    install_btn: 'Installer l\'app Zavichat',
-    trust_badge: 'Approuvé par 80 000+ Africains'
-  }
-};
 
 export default function App() {
   const [toast, setToast] = useState(null);
@@ -94,6 +57,8 @@ export default function App() {
   const [rebaProfile, setRebaProfile] = useState(null);
   const [lang, setLang] = useState('en');
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  const T = DICT[lang];
 
   useEffect(() => {
     const handleBeforeInstall = (e) => {
@@ -107,9 +72,7 @@ export default function App() {
   const handleInstallClick = () => {
     if (deferredPrompt) {
       deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        setDeferredPrompt(null);
-      });
+      deferredPrompt.userChoice.then(() => setDeferredPrompt(null));
     } else {
       alert("Installation is not currently supported in this browser, or the app is already installed.");
     }
@@ -150,17 +113,17 @@ export default function App() {
         <div className="nav-right">
           <div className="online-pill">
             <span className="pulse-dot" />
-            1,918 online
+            {T.nav_online}
           </div>
           <select className="lang-switcher" value={lang} onChange={e => setLang(e.target.value)}>
             <option value="en">🇬🇧 EN</option>
             <option value="rw">🇷🇼 RW</option>
             <option value="fr">🇫🇷 FR</option>
           </select>
-          <button className="btn-gallery" onClick={() => setGalleryOpen(true)}>Payment Gallery 📸</button>
-          <button onClick={handleInstallClick} className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install App</button>
+          <button className="btn-gallery" onClick={() => setGalleryOpen(true)}>{T.nav_gallery}</button>
+          <button onClick={handleInstallClick} className="btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{T.nav_install}</button>
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none' }}>
-            Start Earning
+            {T.nav_start}
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
         </div>
@@ -182,7 +145,6 @@ export default function App() {
 
       {/* ── Mobile Side Drawer ── */}
       <div className={`mobile-drawer${menuOpen ? ' open' : ''}`}>
-        {/* Drawer header */}
         <div className="drawer-header">
           <a href="#" className="nav-logo" onClick={() => setMenuOpen(false)}>
             <img src="/logo.webp" alt="Zavichat Logo" className="nav-logo-img" style={{ width: 36, height: 36 }} />
@@ -198,79 +160,57 @@ export default function App() {
           </button>
         </div>
 
-        {/* Online Status */}
         <div className="drawer-online">
           <span className="pulse-dot" />
-          <span>1,918 users online right now</span>
+          <span>1,918 {T.drawer_online}</span>
         </div>
 
         <div className="drawer-divider" />
 
-        {/* Nav Links */}
         <nav className="drawer-nav">
           <a href="#" className="drawer-link" onClick={() => setMenuOpen(false)}>
-            <span className="drawer-link-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-            </span> How It Works
+            <span className="drawer-link-icon"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></span>
+            {T.drawer_how}
           </a>
           <a href="#" className="drawer-link" onClick={() => setMenuOpen(false)}>
-            <span className="drawer-link-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-            </span> Earnings
+            <span className="drawer-link-icon"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg></span>
+            {T.drawer_earnings}
           </a>
           <a href="#" className="drawer-link" onClick={() => setMenuOpen(false)}>
-            <span className="drawer-link-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-            </span> Testimonials
+            <span className="drawer-link-icon"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg></span>
+            {T.drawer_testimonials}
           </a>
           <a href="#" className="drawer-link" onClick={() => setMenuOpen(false)}>
-            <span className="drawer-link-icon">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
-            </span> FAQ
+            <span className="drawer-link-icon"><svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg></span>
+            {T.drawer_faq}
           </a>
         </nav>
 
         <div className="drawer-divider" />
 
-        {/* CTA Buttons */}
         <div className="drawer-ctas">
-          <a
-            href="https://mulaearn.com/register.php?ref=Cynthia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="drawer-btn-primary"
-            onClick={() => setMenuOpen(false)}
-          >
+          <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="drawer-btn-primary" onClick={() => setMenuOpen(false)}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
-              Start Earning Now
+              {T.drawer_start}
             </div>
           </a>
-          <button
-            onClick={() => { setMenuOpen(false); handleInstallClick(); }}
-            className="drawer-btn-ghost"
-            style={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}
-          >
+          <button onClick={() => { setMenuOpen(false); handleInstallClick(); }} className="drawer-btn-ghost" style={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
-              {DICT[lang].install_btn}
+              {T.drawer_install}
             </div>
           </button>
-
-          <button
-            onClick={() => { setMenuOpen(false); setGalleryOpen(true); }}
-            className="drawer-btn-ghost"
-            style={{ width: '100%', border: 'none', backgroundColor: 'rgba(10,132,255,0.06)', marginTop: '8px', color: '#0A84FF', fontWeight: 700 }}
-          >
+          <button onClick={() => { setMenuOpen(false); setGalleryOpen(true); }} className="drawer-btn-ghost" style={{ width: '100%', border: 'none', backgroundColor: 'rgba(10,132,255,0.06)', marginTop: '8px', color: '#0A84FF', fontWeight: 700 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              📸 Payment Gallery
+              {T.drawer_gallery}
             </div>
           </button>
         </div>
 
         <div className="drawer-footer-note" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', flexWrap: 'wrap' }}>
           <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-          Free signup · Instant payouts · 4.9
+          {T.drawer_trust}
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
         </div>
       </div>
@@ -279,78 +219,65 @@ export default function App() {
       <section className="hero">
         <div className="hero-trust">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-          {DICT[lang].trust_badge}
+          {T.trust_badge}
         </div>
-        <h1 dangerouslySetInnerHTML={{ __html: DICT[lang].hero_title }}></h1>
-        <p className="hero-sub">{DICT[lang].hero_sub}</p>
+        <h1 dangerouslySetInnerHTML={{ __html: T.hero_title }}></h1>
+        <p className="hero-sub">{T.hero_sub}</p>
         <div className="hero-ctas">
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary-lg" style={{ textDecoration: 'none' }}>
-            {DICT[lang].start_btn}
+            {T.start_btn}
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
-          <button onClick={handleInstallClick} className="btn-outline-lg" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{DICT[lang].install_btn}</button>
+          <button onClick={handleInstallClick} className="btn-outline-lg" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{T.install_btn}</button>
         </div>
         <div className="hero-checkmarks">
-          <span className="check-item"><span className="chk">✔</span> Instant withdrawals</span>
-          <span className="check-item"><span className="chk">✔</span> No experience needed</span>
-          <span className="check-item"><span className="chk">✔</span> 24/7 support</span>
+          <span className="check-item"><span className="chk">✔</span> {T.check_withdraw}</span>
+          <span className="check-item"><span className="chk">✔</span> {T.check_skill}</span>
+          <span className="check-item"><span className="chk">✔</span> {T.check_support}</span>
         </div>
       </section>
 
       {/* ── Stats bar ── */}
       <div className="stats-bar">
-        <div className="stat-item"><div className="stat-num">80,000+</div><div className="stat-label">Active Earners</div></div>
-        <div className="stat-item"><div className="stat-num">$1.2M+</div><div className="stat-label">Total Paid Out</div></div>
-        <div className="stat-item"><div className="stat-num">1,918</div><div className="stat-label">Online Right Now</div></div>
-        <div className="stat-item"><div className="stat-num">4.9 ⭐</div><div className="stat-label">Trust Score</div></div>
+        <div className="stat-item"><div className="stat-num">80,000+</div><div className="stat-label">{T.stat_earners}</div></div>
+        <div className="stat-item"><div className="stat-num">$1.2M+</div><div className="stat-label">{T.stat_paid}</div></div>
+        <div className="stat-item"><div className="stat-num">1,918</div><div className="stat-label">{T.stat_online}</div></div>
+        <div className="stat-item"><div className="stat-num">4.9 ⭐</div><div className="stat-label">{T.stat_trust}</div></div>
       </div>
 
       {/* ── WhatsApp Community Band ── */}
       <div style={{ padding: '32px 40px 0' }}>
         <div className="wa-band">
           <div className="wa-band-text">
-            <h3>📱 Join Our Training WhatsApp Channel</h3>
-            <p>Get training updates &amp; connect with 80,000+ earners across Africa.</p>
+            <h3>{T.wa_title}</h3>
+            <p>{T.wa_sub}</p>
           </div>
-          <button className="btn-wa" onClick={() => window.open('https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX', '_blank')}>Join Now →</button>
+          <button className="btn-wa" onClick={() => window.open('https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX', '_blank')}>{T.wa_btn}</button>
         </div>
       </div>
 
       {/* ── How It Works Section ── */}
       <section className="how-section">
         <div className="how-intro">
-          <h2>How Zavichat Works – Simple &amp; Transparent</h2>
-          <p>
-            Getting started on Zavichat takes less than 30 seconds. Sign up for free, get matched with real people from the USA, UK, Germany, Canada, and other countries who are willing to pay for friendly chats. Every message you send can earn you money. Our system ensures fair matching and secure payments worldwide. Users across the globe are earning strong weekly incomes—whether cashing out $50 to $500+, or Rwf 50,000 to Rwf 150,000+—depending entirely on how active they are.
-          </p>
+          <h2>{T.how_h2}</h2>
+          <p>{T.how_p}</p>
         </div>
-
         <div className="how-steps-header">
-          <h3>How it works</h3>
-          <p>Three simple steps to start earning today.</p>
+          <h3>{T.how_steps_h3}</h3>
+          <p>{T.how_steps_p}</p>
         </div>
-
         <div className="how-grid">
           <div className="how-card">
-            <div className="how-icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>
-            </div>
-            <h4>1. Sign up</h4>
-            <p>Create your free chatting account in 30 seconds.</p>
+            <div className="how-icon"><svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg></div>
+            <h4>{T.step1_h}</h4><p>{T.step1_p}</p>
           </div>
           <div className="how-card">
-            <div className="how-icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-            </div>
-            <h4>2. Chat</h4>
-            <p>Get matched with lonely foreigners and earn per message.</p>
+            <div className="how-icon"><svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
+            <h4>{T.step2_h}</h4><p>{T.step2_p}</p>
           </div>
           <div className="how-card">
-            <div className="how-icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" /><path d="M3 5v14a2 2 0 0 0 2 2h16v-5" /><path d="M18 12a2 2 0 0 0 0 4h4v-4Z" /></svg>
-            </div>
-            <h4>3. Withdraw</h4>
-            <p>Cash out instantly to M-Pesa, MoMo, bank, or PayPal.</p>
+            <div className="how-icon"><svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" /><path d="M3 5v14a2 2 0 0 0 2 2h16v-5" /><path d="M18 12a2 2 0 0 0 0 4h4v-4Z" /></svg></div>
+            <h4>{T.step3_h}</h4><p>{T.step3_p}</p>
           </div>
         </div>
       </section>
@@ -358,31 +285,26 @@ export default function App() {
       {/* ── Value Section ── */}
       <section className="value-section">
         <div>
-          <div className="value-label">Why Zavichat?</div>
-          <h2>Turn Your Free Time Into Real Cash</h2>
-          <p>
-            Zavichat hooks you up with guys overseas looking for fun, casual chats. No complicated setups. Jump on, reply to messages, and watch your balance grow instantly.
-          </p>
+          <div className="value-label">{T.value_label}</div>
+          <h2>{T.value_h2}</h2>
+          <p>{T.value_p}</p>
           <div className="benefit-list">
             {[
-              ['💬', 'Chat at your own pace, anytime you want'],
-              ['💰', 'Get paid per message — every reply counts'],
-              ['⚡', 'Withdraw instantly to M-Pesa, MoMo, PayPal or bank'],
-              ['🌍', 'Genuine foreigners from USA, UK, Germany &amp; more'],
-              ['🔒', 'Your privacy is protected at all times'],
+              ['💬', T.benefit_1],
+              ['💰', T.benefit_2],
+              ['⚡', T.benefit_3],
+              ['🌍', T.benefit_4],
+              ['🔒', T.benefit_5],
             ].map(([icon, text], i) => (
               <div className="benefit-item" key={i}>
                 <div className="benefit-icon">{icon}</div>
-                <span dangerouslySetInnerHTML={{ __html: text }} />
+                <span>{text}</span>
               </div>
             ))}
           </div>
         </div>
         <div className="value-img-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80"
-            alt="African woman earning on her phone"
-          />
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="African woman earning on her phone" />
           <div className="value-img-badge">
             <div className="vib-icon">💳</div>
             <div className="vib-text">
@@ -396,23 +318,17 @@ export default function App() {
       {/* ── Live Foreigners ── */}
       <section className="profiles-section">
         <div className="section-header">
-          <div className="section-tag">Live Now</div>
-          <h2>💬 Foreigners Online Right Now</h2>
-          <p>Tap any profile to start a paid chat instantly.</p>
+          <div className="section-tag">{T.profiles_tag}</div>
+          <h2>{T.profiles_h2}</h2>
+          <p>{T.profiles_p}</p>
         </div>
         <div className="profiles-grid">
           {PROFILES.map((p, i) => (
             <div className="profile-card" key={i}>
               <div className="pc-top">
                 <div className="pc-avatar-wrap">
-                  <img
-                    src={p.avatar}
-                    alt={p.name}
-                    className="pc-avatar"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0A84FF&color=fff`;
-                    }}
+                  <img src={p.avatar} alt={p.name} className="pc-avatar"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0A84FF&color=fff`; }}
                   />
                   <span className="pc-online" />
                 </div>
@@ -425,24 +341,20 @@ export default function App() {
                   <div className={`pc-status ${p.type}`}>
                     {p.type === 'typing' ? (
                       <span className="typing-indicator">
-                        <span className="dot"></span>
-                        <span className="dot"></span>
-                        <span className="dot"></span>
+                        <span className="dot"></span><span className="dot"></span><span className="dot"></span>
                       </span>
-                    ) : (
-                      '👀 Ashaka kuvugana 💬'
-                    )}
+                    ) : '👀 Ashaka kuvugana 💬'}
                   </div>
                 </div>
               </div>
               <div className="pc-actions">
-                <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="pc-btn-start" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Tangira</a>
-                <button className="pc-btn-watch" onClick={() => setRebaProfile(p)}>Reba</button>
+                <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="pc-btn-start" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{T.tangira}</a>
+                <button className="pc-btn-watch" onClick={() => setRebaProfile(p)}>{T.reba}</button>
               </div>
             </div>
           ))}
         </div>
-        <div className="profiles-more">👉 +48 more active foreigners — join to chat</div>
+        <div className="profiles-more">{T.profiles_more}</div>
       </section>
 
       {/* ── Real-time earnings ticker ── */}
@@ -450,18 +362,12 @@ export default function App() {
         <div className="earn-ticker-track">
           {[...TOASTS, ...TOASTS, ...TOASTS].map((t, i) => (
             <div className="earn-item" key={i}>
-              <img
-                src={PROFILES[i % PROFILES.length].avatar}
-                alt=""
-                className="earn-avatar"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`;
-                }}
+              <img src={PROFILES[i % PROFILES.length].avatar} alt="" className="earn-avatar"
+                onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`; }}
               />
-              <span>{t.flag} {t.name} just withdrew</span>
+              <span>{t.flag} {t.name} {T.toast_withdrew}</span>
               <strong className="earn-amount">{t.amount}</strong>
-              <span style={{ color: '#94a3b8' }}>via {t.method}</span>
+              <span style={{ color: '#94a3b8' }}>{T.toast_via} {t.method}</span>
             </div>
           ))}
         </div>
@@ -470,23 +376,17 @@ export default function App() {
       {/* ── Testimonials ── */}
       <section className="testimonials-section">
         <div className="section-header">
-          <div className="section-tag">Success Stories</div>
-          <h2>Real Earnings from Real African Users</h2>
-          <p>Zavichat has paid out over $1.2 Million. Here's what our community is saying.</p>
+          <div className="section-tag">{T.testi_tag}</div>
+          <h2>{T.testi_h2}</h2>
+          <p>{T.testi_p}</p>
         </div>
         <div className="testi-grid">
           {TESTIMONIALS.map((t, i) => (
             <div className="testi-card" key={i}>
               <div className="testi-top">
                 <div className="testi-avatar-wrap">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    className="testi-avatar-img"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`;
-                    }}
+                  <img src={t.avatar} alt={t.name} className="testi-avatar-img"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=0A84FF&color=fff`; }}
                   />
                   <span className="testi-flag-badge">{t.flag}</span>
                 </div>
@@ -506,19 +406,15 @@ export default function App() {
       {/* ── FAQ ── */}
       <section className="faq-section">
         <div className="section-header">
-          <div className="section-tag">FAQ</div>
-          <h2>Frequently Asked Questions</h2>
-          <p>Got questions? We've got straight answers.</p>
+          <div className="section-tag">{T.faq_tag}</div>
+          <h2>{T.faq_h2}</h2>
+          <p>{T.faq_p}</p>
         </div>
         <div className="faq-list">
-          {FAQS.map((f, i) => {
+          {T.faqs.map((f, i) => {
             const isOpen = openFaq === i;
             return (
-              <div
-                className={`faq-item ${isOpen ? 'open' : ''}`}
-                key={i}
-                onClick={() => setOpenFaq(isOpen ? null : i)}
-              >
+              <div className={`faq-item ${isOpen ? 'open' : ''}`} key={i} onClick={() => setOpenFaq(isOpen ? null : i)}>
                 <div className="faq-q">
                   {f.q}
                   <span className="faq-icon">
@@ -539,16 +435,16 @@ export default function App() {
 
       {/* ── Final CTA ── */}
       <section className="cta-section">
-        <h2>Ready to Start Earning?</h2>
-        <p>Set up your account in 30 seconds and start texting guys who are online right now.</p>
+        <h2>{T.cta_h2}</h2>
+        <p>{T.cta_p}</p>
         <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-cta-white" style={{ textDecoration: 'none' }}>
-          CREATE YOUR ACCOUNT →
+          {T.cta_btn}
         </a>
         <div className="cta-trust">
-          <span>🔒 Free signup</span>
-          <span>⚡ Instant payouts</span>
-          <span>⭐ 4.9 trust score</span>
-          <span>🌍 80,000+ earners</span>
+          <span>{T.cta_signup}</span>
+          <span>{T.cta_payouts}</span>
+          <span>{T.cta_trust}</span>
+          <span>{T.cta_earners}</span>
         </div>
       </section>
 
@@ -560,32 +456,32 @@ export default function App() {
               <img src="/logo.webp" alt="Zavichat Logo" className="footer-logo-img" />
               Zavi<span className="accent">Chat</span>
             </a>
-            <p>Africa's leading platform for chatting and earning. Trusted by 80,000+ people across Kenya, Nigeria, Ghana, Rwanda and more.</p>
+            <p>{T.footer_about}</p>
           </div>
           <div className="footer-links">
             <div className="footer-col">
-              <h4>Company</h4>
-              <a href="#">About Us</a>
-              <a href="#">How it Works</a>
-              <a href="#">Testimonials</a>
+              <h4>{T.footer_company}</h4>
+              <a href="#">{T.footer_about_link}</a>
+              <a href="#">{T.footer_how}</a>
+              <a href="#">{T.footer_testimonials}</a>
             </div>
             <div className="footer-col">
-              <h4>Legal</h4>
-              <a href="#">Terms of Service</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Cookie Policy</a>
+              <h4>{T.footer_legal}</h4>
+              <a href="#">{T.footer_terms}</a>
+              <a href="#">{T.footer_privacy}</a>
+              <a href="#">{T.footer_cookies}</a>
             </div>
             <div className="footer-col">
-              <h4>Support</h4>
-              <a href="#">Contact Us</a>
-              <a href="https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
-              <a href="#">FAQ</a>
+              <h4>{T.footer_support}</h4>
+              <a href="#">{T.footer_contact}</a>
+              <a href="https://chat.whatsapp.com/CKYjAanhccELoIaeWdavhX" target="_blank" rel="noopener noreferrer">{T.footer_wa}</a>
+              <a href="#">{T.footer_faq}</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Zavichat. All rights reserved.</span>
-          <span>🔒 Secure &amp; Encrypted Platform</span>
+          <span>{T.footer_copy}</span>
+          <span>{T.footer_secure}</span>
         </div>
       </footer>
 
@@ -596,7 +492,7 @@ export default function App() {
             <span className="toast-flag">{toast.flag}</span>
             <div className="toast-body">
               <strong>{toast.name}</strong>
-              <span>{toast.country} · via {toast.method} · just now</span>
+              <span>{toast.country} · {T.toast_via} {toast.method} · just now</span>
             </div>
             <span className="toast-amount">{toast.amount}</span>
           </div>
@@ -611,13 +507,13 @@ export default function App() {
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
             </button>
             <div className="gallery-header">
-              <h2>Verified Payout Proofs</h2>
-              <p>Real screenshots from our community cashing out securely direct to M-Pesa, MoMo, and Banks.</p>
+              <h2>{T.gallery_h2}</h2>
+              <p>{T.gallery_p}</p>
             </div>
             <div className="gallery-grid">
               {PROOF_IMAGES.map((img, i) => (
                 <div key={i} className="gallery-img-wrap">
-                  <img src={`/withdrwalproofs/${encodeURI(img)}`} alt="Payment Proof" loading="lazy" />
+                  <img src={`/withdrwalproofs/${img}`} alt="Payment Proof" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -637,17 +533,12 @@ export default function App() {
             <div className="pdm-body">
               <h3>{rebaProfile.name}, {rebaProfile.age}</h3>
               <div className="pdm-location">📍 {rebaProfile.country}</div>
-
               <div className="pdm-rate">
-                <span className="rate-badge">💰 Earn Rate: $21 - $48 / Hour</span>
+                <span className="rate-badge">{T.reba_earn}</span>
               </div>
-              <p className="pdm-desc">
-                {rebaProfile.name} is online right now and actively looking for someone to chat with.
-                They are fully verified and ready to pay for your time and conversation.
-              </p>
-
+              <p className="pdm-desc">{T.reba_desc_tpl(rebaProfile.name)}</p>
               <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary-lg pdm-btn">
-                Start Chatting with {rebaProfile.name.split(' ')[0]} Now
+                {T.reba_cta_tpl(rebaProfile.name.split(' ')[0])}
               </a>
             </div>
           </div>

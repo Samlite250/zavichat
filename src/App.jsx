@@ -51,15 +51,15 @@ const TICKER = [
 ];
 
 const PROOF_IMAGES = [
-  "WhatsApp Image 2026-09-20 at 22.10.47.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.10.48.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.10.51.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.10.52.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.11.10.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.11.11.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.11.20.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.11.25.jpeg",
-  "WhatsApp Image 2026-09-20 at 22.11.27.jpeg"
+  "proof1.jpeg",
+  "proof2.jpeg",
+  "proof3.jpeg",
+  "proof4.jpeg",
+  "proof5.jpeg",
+  "proof6.jpeg",
+  "proof7.jpeg",
+  "proof8.jpeg",
+  "proof9.jpeg"
 ];
 
 export default function App() {
@@ -67,6 +67,27 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handleBeforeInstall = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+  }, []);
+
+  const handleInstallClick = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        setDeferredPrompt(null);
+      });
+    } else {
+      alert("Installation is not currently supported in this browser, or the app is already installed.");
+    }
+  };
 
   useEffect(() => {
     let i = 0;
@@ -106,7 +127,7 @@ export default function App() {
             1,918 online
           </div>
           <button className="btn-gallery" onClick={() => setGalleryOpen(true)}>Payment Gallery 📸</button>
-          <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install App</a>
+          <button onClick={handleInstallClick} className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install App</button>
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none' }}>
             Start Earning
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -191,18 +212,16 @@ export default function App() {
               Start Earning Now
             </div>
           </a>
-          <a
-            href="https://mulaearn.com/register.php?ref=Cynthia"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => { setMenuOpen(false); handleInstallClick(); }}
             className="drawer-btn-ghost"
-            onClick={() => setMenuOpen(false)}
+            style={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
               Install Zavichat App
             </div>
-          </a>
+          </button>
         </div>
 
         <div className="drawer-footer-note" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', flexWrap: 'wrap' }}>
@@ -230,7 +249,7 @@ export default function App() {
             Start Chat &amp; Earn
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
-          <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-outline-lg" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install Zavichat App</a>
+          <button onClick={handleInstallClick} className="btn-outline-lg" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install Zavichat App</button>
         </div>
         <div className="hero-checkmarks">
           <span className="check-item"><span className="chk">✔</span> Instant withdrawals</span>

@@ -62,11 +62,37 @@ const PROOF_IMAGES = [
   "proof9.jpeg"
 ];
 
+const DICT = {
+  en: {
+    hero_title: 'Get Paid to Chat with<br /><span class="highlight">Lonely Foreigners</span>',
+    hero_sub: 'Over 80,000 Africans are already earning daily. Cash out your earnings instantly to M-Pesa, MoMo, or your local bank — straight from your phone.',
+    start_btn: 'Start Chat & Earn',
+    install_btn: 'Install Zavichat App',
+    trust_badge: 'Trusted by 80,000+ Africans'
+  },
+  rw: {
+    hero_title: 'Heembwa uganira<br /><span class="highlight">n\'abanyamahanga</span>',
+    hero_sub: 'Abanyafurika barenga 80,000 bamaze kubona amafaranga buri munsi. Bikuza ako kanya kuri M-Pesa, MoMo, cyangwa banki — ukoresheje telefone yawe.',
+    start_btn: 'Tangira Uvugane Unakorerere',
+    install_btn: 'Shyiramo App ya Zavichat',
+    trust_badge: 'Yizewe n\'abanyafurika 80,000+'
+  },
+  fr: {
+    hero_title: 'Soyez payé pour discuter avec<br /><span class="highlight">des étrangers seuls</span>',
+    hero_sub: 'Plus de 80 000 Africains gagnent déjà de l\'argent chaque jour. Retirez instantanément via M-Pesa, MoMo ou votre banque.',
+    start_btn: 'Commentez et Gagnez',
+    install_btn: 'Installer l\'app Zavichat',
+    trust_badge: 'Approuvé par 80 000+ Africains'
+  }
+};
+
 export default function App() {
   const [toast, setToast] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [rebaProfile, setRebaProfile] = useState(null);
+  const [lang, setLang] = useState('en');
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
@@ -126,6 +152,11 @@ export default function App() {
             <span className="pulse-dot" />
             1,918 online
           </div>
+          <select className="lang-switcher" value={lang} onChange={e => setLang(e.target.value)}>
+            <option value="en">🇬🇧 EN</option>
+            <option value="rw">🇷🇼 RW</option>
+            <option value="fr">🇫🇷 FR</option>
+          </select>
           <button className="btn-gallery" onClick={() => setGalleryOpen(true)}>Payment Gallery 📸</button>
           <button onClick={handleInstallClick} className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install App</button>
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none' }}>
@@ -157,6 +188,9 @@ export default function App() {
             <img src="/logo.webp" alt="Zavichat Logo" className="nav-logo-img" style={{ width: 36, height: 36 }} />
             Zavi<span className="accent">Chat</span>
           </a>
+          <select className="lang-switcher-mobile" value={lang} onChange={e => setLang(e.target.value)}>
+            <option value="en">EN</option><option value="rw">RW</option><option value="fr">FR</option>
+          </select>
           <button className="drawer-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
@@ -219,7 +253,17 @@ export default function App() {
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
               <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>
-              Install Zavichat App
+              {DICT[lang].install_btn}
+            </div>
+          </button>
+
+          <button
+            onClick={() => { setMenuOpen(false); setGalleryOpen(true); }}
+            className="drawer-btn-ghost"
+            style={{ width: '100%', border: 'none', backgroundColor: 'rgba(10,132,255,0.06)', marginTop: '8px', color: '#0A84FF', fontWeight: 700 }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              📸 Payment Gallery
             </div>
           </button>
         </div>
@@ -235,21 +279,16 @@ export default function App() {
       <section className="hero">
         <div className="hero-trust">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-          Trusted by 80,000+ Africans
+          {DICT[lang].trust_badge}
         </div>
-        <h1>
-          Get Paid to Chat with<br />
-          <span className="highlight">Lonely Foreigners</span>
-        </h1>
-        <p className="hero-sub">
-          Over 80,000 Africans are already earning daily. Cash out your earnings instantly to M-Pesa, MoMo, or your local bank — straight from your phone.
-        </p>
+        <h1 dangerouslySetInnerHTML={{ __html: DICT[lang].hero_title }}></h1>
+        <p className="hero-sub">{DICT[lang].hero_sub}</p>
         <div className="hero-ctas">
           <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary-lg" style={{ textDecoration: 'none' }}>
-            Start Chat &amp; Earn
+            {DICT[lang].start_btn}
             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>
-          <button onClick={handleInstallClick} className="btn-outline-lg" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Install Zavichat App</button>
+          <button onClick={handleInstallClick} className="btn-outline-lg" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{DICT[lang].install_btn}</button>
         </div>
         <div className="hero-checkmarks">
           <span className="check-item"><span className="chk">✔</span> Instant withdrawals</span>
@@ -398,7 +437,7 @@ export default function App() {
               </div>
               <div className="pc-actions">
                 <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="pc-btn-start" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Tangira</a>
-                <button className="pc-btn-watch">Reba</button>
+                <button className="pc-btn-watch" onClick={() => setRebaProfile(p)}>Reba</button>
               </div>
             </div>
           ))}
@@ -581,6 +620,35 @@ export default function App() {
                   <img src={`/withdrwalproofs/${encodeURI(img)}`} alt="Payment Proof" loading="lazy" />
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Reba Profile Modal ── */}
+      {rebaProfile && (
+        <div className="gallery-overlay" onClick={() => setRebaProfile(null)}>
+          <div className="profile-detail-modal" onClick={e => e.stopPropagation()}>
+            <button className="gallery-modal-close" onClick={() => setRebaProfile(null)}>✕</button>
+            <div className="pdm-header">
+              <img src={rebaProfile.avatar} alt={rebaProfile.name} className="pdm-avatar" />
+              <div className="pdm-status pulse-dot"></div>
+            </div>
+            <div className="pdm-body">
+              <h3>{rebaProfile.name}, {rebaProfile.age}</h3>
+              <div className="pdm-location">📍 {rebaProfile.country}</div>
+
+              <div className="pdm-rate">
+                <span className="rate-badge">💰 Earn Rate: $21 - $48 / Hour</span>
+              </div>
+              <p className="pdm-desc">
+                {rebaProfile.name} is online right now and actively looking for someone to chat with.
+                They are fully verified and ready to pay for your time and conversation.
+              </p>
+
+              <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="btn-primary-lg pdm-btn">
+                Start Chatting with {rebaProfile.name.split(' ')[0]} Now
+              </a>
             </div>
           </div>
         </div>

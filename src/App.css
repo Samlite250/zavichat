@@ -617,14 +617,35 @@
   padding: 22px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
-  transition: var(--transition);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .profile-card:hover {
   border-color: rgba(10, 132, 255, 0.4);
   box-shadow: var(--shadow-hover);
   transform: translateY(-3px);
+}
+
+.profile-card.card-updated {
+  animation: profilePulse 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-color: rgba(10, 132, 255, 0.7);
+  box-shadow: 0 0 20px rgba(10, 132, 255, 0.22);
+}
+
+@keyframes profilePulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.028);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .pc-top {
@@ -677,23 +698,32 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
-.pc-flag {
-  font-size: 0.7rem;
+.pc-flag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.flag-emoji {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pc-country-text {
+  font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  background: var(--bg-main);
-  padding: 1px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.05em;
-}
-
-.pc-country {
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  color: #334155;
+  letter-spacing: 0.01em;
 }
 
 .pc-status {
@@ -708,12 +738,24 @@
   gap: 6px;
 }
 
+.typing-status-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.typing-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
 .typing-indicator {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   background: rgba(52, 199, 89, 0.1);
-  padding: 5px 8px;
+  padding: 4px 7px;
   border-radius: 12px;
   height: 18px;
 }

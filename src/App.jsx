@@ -3,18 +3,30 @@ import './App.css';
 import DICT from './translations.js';
 
 const PROFILES = [
-  { code: 'US', name: 'Margaret W.', age: 58, country: 'USA', type: 'looking', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
-  { code: 'GB', name: 'Robert H.', age: 62, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80' },
-  { code: 'DE', name: 'Helga S.', age: 55, country: 'Germany', type: 'looking', avatar: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=200&q=80' },
-  { code: 'CA', name: 'James M.', age: 49, country: 'Canada', type: 'typing', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
-  { code: 'AU', name: 'Karen P.', age: 51, country: 'Australia', type: 'looking', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80' },
-  { code: 'SE', name: 'Lars E.', age: 60, country: 'Sweden', type: 'looking', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
-  { code: 'NO', name: 'Ingrid O.', age: 57, country: 'Norway', type: 'typing', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
-  { code: 'FR', name: 'Pierre D.', age: 63, country: 'France', type: 'typing', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80' },
-  { code: 'IT', name: 'Sofia R.', age: 54, country: 'Italy', type: 'looking', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80' },
-  { code: 'RW', name: 'Kwizera T.', age: 29, country: 'Rwanda', type: 'looking', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80' },
-  { code: 'US', name: 'William T.', age: 67, country: 'USA', type: 'typing', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80' },
-  { code: 'GB', name: 'Diane K.', age: 59, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p1', code: 'US', flag: '🇺🇸', name: 'Margaret W.', age: 58, country: 'USA', type: 'looking', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p2', code: 'GB', flag: '🇬🇧', name: 'Robert H.', age: 62, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p3', code: 'DE', flag: '🇩🇪', name: 'Helga S.', age: 55, country: 'Germany', type: 'looking', avatar: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p4', code: 'CA', flag: '🇨🇦', name: 'James M.', age: 49, country: 'Canada', type: 'typing', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p5', code: 'AU', flag: '🇦🇺', name: 'Karen P.', age: 51, country: 'Australia', type: 'looking', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p6', code: 'SE', flag: '🇸🇪', name: 'Lars E.', age: 60, country: 'Sweden', type: 'looking', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p7', code: 'NO', flag: '🇳🇴', name: 'Ingrid O.', age: 57, country: 'Norway', type: 'typing', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p8', code: 'FR', flag: '🇫🇷', name: 'Pierre D.', age: 63, country: 'France', type: 'typing', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p9', code: 'IT', flag: '🇮🇹', name: 'Sofia R.', age: 54, country: 'Italy', type: 'looking', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p10', code: 'RW', flag: '🇷🇼', name: 'Kwizera T.', age: 29, country: 'Rwanda', type: 'looking', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p11', code: 'US', flag: '🇺🇸', name: 'William T.', age: 67, country: 'USA', type: 'typing', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p12', code: 'GB', flag: '🇬🇧', name: 'Diane K.', age: 59, country: 'UK', type: 'typing', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p13', code: 'CH', flag: '🇨🇭', name: 'Beat M.', age: 61, country: 'Switzerland', type: 'looking', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p14', code: 'NL', flag: '🇳🇱', name: 'Jan V.', age: 57, country: 'Netherlands', type: 'typing', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p15', code: 'BE', flag: '🇧🇪', name: 'Luc D.', age: 60, country: 'Belgium', type: 'looking', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p16', code: 'DK', flag: '🇩🇰', name: 'Frederik H.', age: 53, country: 'Denmark', type: 'typing', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p17', code: 'ES', flag: '🇪🇸', name: 'Carmen G.', age: 52, country: 'Spain', type: 'looking', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p18', code: 'US', flag: '🇺🇸', name: 'Michael B.', age: 64, country: 'USA', type: 'typing', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p19', code: 'GB', flag: '🇬🇧', name: 'Eleanor F.', age: 56, country: 'UK', type: 'looking', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p20', code: 'DE', flag: '🇩🇪', name: 'Hans K.', age: 63, country: 'Germany', type: 'typing', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p21', code: 'CA', flag: '🇨🇦', name: 'Sarah L.', age: 48, country: 'Canada', type: 'looking', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p22', code: 'AU', flag: '🇦🇺', name: 'David W.', age: 59, country: 'Australia', type: 'typing', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p23', code: 'JP', flag: '🇯🇵', name: 'Kenji S.', age: 51, country: 'Japan', type: 'looking', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80' },
+  { id: 'p24', code: 'FI', flag: '🇫🇮', name: 'Matti N.', age: 58, country: 'Finland', type: 'typing', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80' }
 ];
 
 const TESTIMONIALS = [
@@ -58,7 +70,55 @@ export default function App() {
   const [lang, setLang] = useState('en');
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
+  // Dynamic profiles state — show 16 online users at any time (> 15 people)
+  const [onlineList, setOnlineList] = useState(() => PROFILES.slice(0, 16));
+  const [poolProfiles, setPoolProfiles] = useState(() => PROFILES.slice(16));
+  const [updatingId, setUpdatingId] = useState(null);
+
   const T = DICT[lang];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const isStatusChange = Math.random() > 0.45;
+      const targetIdx = Math.floor(Math.random() * onlineList.length);
+
+      if (isStatusChange) {
+        setOnlineList(prev => {
+          const next = [...prev];
+          if (next[targetIdx]) {
+            const current = next[targetIdx];
+            const nextType = current.type === 'typing' ? 'looking' : 'typing';
+            next[targetIdx] = { ...current, type: nextType };
+            setUpdatingId(current.id);
+          }
+          return next;
+        });
+      } else {
+        setPoolProfiles(prevPool => {
+          if (prevPool.length === 0) return prevPool;
+          const nextFromPool = prevPool[0];
+          const restPool = prevPool.slice(1);
+
+          setOnlineList(prevOnline => {
+            const nextOnline = [...prevOnline];
+            const outgoingUser = nextOnline[targetIdx];
+            nextOnline[targetIdx] = nextFromPool;
+            setUpdatingId(nextFromPool.id);
+            if (outgoingUser) {
+              setPoolProfiles(p => [...restPool, outgoingUser]);
+            }
+            return nextOnline;
+          });
+
+          return restPool;
+        });
+      }
+
+      setTimeout(() => setUpdatingId(null), 1600);
+    }, 3200);
+
+    return () => clearInterval(timer);
+  }, [onlineList.length]);
 
   useEffect(() => {
     const handleBeforeInstall = (e) => {
@@ -345,36 +405,46 @@ export default function App() {
           <p>{T.profiles_p}</p>
         </div>
         <div className="profiles-grid">
-          {PROFILES.map((p, i) => (
-            <div className="profile-card" key={i}>
-              <div className="pc-top">
-                <div className="pc-avatar-wrap">
-                  <img src={p.avatar} alt={p.name} className="pc-avatar"
-                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0A84FF&color=fff`; }}
-                  />
-                  <span className="pc-online" />
-                </div>
-                <div className="pc-info">
-                  <div className="pc-name">{p.name} · {p.age}</div>
-                  <div className="pc-meta">
-                    <span className="pc-flag">{p.code}</span>
-                    <span className="pc-country">{p.country}</span>
+          {onlineList.map((p) => {
+            const isUpdating = p.id === updatingId;
+            return (
+              <div className={`profile-card${isUpdating ? ' card-updated' : ''}`} key={p.id}>
+                <div className="pc-top">
+                  <div className="pc-avatar-wrap">
+                    <img src={p.avatar} alt={p.name} className="pc-avatar"
+                      onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=0A84FF&color=fff`; }}
+                    />
+                    <span className="pc-online" />
                   </div>
-                  <div className={`pc-status ${p.type}`}>
-                    {p.type === 'typing' ? (
-                      <span className="typing-indicator">
-                        <span className="dot"></span><span className="dot"></span><span className="dot"></span>
+                  <div className="pc-info">
+                    <div className="pc-name">{p.name} · {p.age}</div>
+                    <div className="pc-meta">
+                      <span className="pc-flag-badge">
+                        <span className="flag-emoji">{p.flag}</span>
+                        <span className="pc-country-text">{p.country}</span>
                       </span>
-                    ) : '👀 Ashaka kuvugana 💬'}
+                    </div>
+                    <div className={`pc-status ${p.type}`}>
+                      {p.type === 'typing' ? (
+                        <span className="typing-status-wrap">
+                          <span className="typing-text">{T.status_typing || 'Typing a message...'}</span>
+                          <span className="typing-indicator">
+                            <span className="dot"></span><span className="dot"></span><span className="dot"></span>
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="status-looking-text">{T.status_looking || '👀 Wants to chat 💬'}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
+                <div className="pc-actions">
+                  <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="pc-btn-start" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{T.tangira}</a>
+                  <button className="pc-btn-watch" onClick={() => setRebaProfile(p)}>{T.reba}</button>
+                </div>
               </div>
-              <div className="pc-actions">
-                <a href="https://mulaearn.com/register.php?ref=Cynthia" target="_blank" rel="noopener noreferrer" className="pc-btn-start" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{T.tangira}</a>
-                <button className="pc-btn-watch" onClick={() => setRebaProfile(p)}>{T.reba}</button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div className="profiles-more">{T.profiles_more}</div>
       </section>
@@ -475,7 +545,7 @@ export default function App() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="footer-logo">
-              <img src="/logo.webp" alt="Zavichat Logo" className="footer-logo-img" />
+              <img src="/logo.png" alt="Zavichat Logo" className="footer-logo-img" />
               Zavi<span className="accent">Chat</span>
             </a>
             <p>{T.footer_about}</p>
@@ -554,7 +624,7 @@ export default function App() {
             </div>
             <div className="pdm-body">
               <h3>{rebaProfile.name}, {rebaProfile.age}</h3>
-              <div className="pdm-location">📍 {rebaProfile.country}</div>
+              <div className="pdm-location">{rebaProfile.flag} {rebaProfile.country}</div>
               <div className="pdm-rate">
                 <span className="rate-badge">{T.reba_earn}</span>
               </div>
